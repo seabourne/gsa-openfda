@@ -1,0 +1,3 @@
+#!/bin/bash
+./stop
+PORT=3000 FOREVER_ROOT=.forever node index.js
