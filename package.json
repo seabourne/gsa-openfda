@@ -4,11 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "./devstart",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "./start",
+    "test": "./test.sh"
   },
   "repository": {
     "type": "git",
