@@ -21,6 +21,9 @@
     "local": {
       "db": "mongodb://localhost/gsa-openfda-dev"
     },
+    "test": {
+      "db": "mongodb://172.31.51.44:27017/gsa-openfda-test"
+    },
     "production": {
       "db": "mongodb://172.31.51.44:27017/gsa-openfda-dev"
     }
