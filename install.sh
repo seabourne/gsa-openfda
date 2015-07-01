@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e
 
-echo "Installing Root"
-npm install
-
 echo "Installing Core"
 cd ./plugins/core
 npm install
