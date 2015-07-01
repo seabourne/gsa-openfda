@@ -8,15 +8,75 @@
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-4">
-            <h3>Introduction</h3>
-            <p>
+            <h3>What is it?</h3>
+            <p>The goal of the tools is to visualize the relationship between different concepts in food safety enforcement actions.  Ideally, this approach will help FDA stakeholders explore the relationship between key reasons for recalls (for example, fatal infections due to ingestion of the product) and other factors (like presence of listeria in peanut products). </p>
+            
+            <p>Using a combination of APIs, natural language processing (NLP) tools, data aggregations, and visualization libraries, this prototype demonstrates the feasibility and low level of effort necessary to use open source tools to better understand and represent the relationships between products, ingredients, contaminations and enforcement actions.</p>
 
-            </p>
+            <h3>Moving beyond structured data</h3>
+
+            <p>Our approach is a demonstration of how natural language processing approaches and technologies can help Federal Agencies move beyond the limits of structured (or poorly structured) data. Analyzing, and visualizing data, does not necessarily have to begin with a time-consuming and expensive data cleansing and ETL processing. Instead, newer technologies, including NLP and machine learning, are lowering the technology and cost barriers to getting the most out of any type of data.</p>
+
+            <p>This prototype took less than 25 person hours to develop, from concept through to deliver, and we hope that it provides a tangible (and interesting) demonstration of the many great things that can be done today using APIs, open source tools and data.</p>
           </div>
           <div class="col-sm-4">
             <h3>Architecture</h3>
             <p>
+              The application has been deployed on an Amazon Web Services EC2 (small) instance, running Ubuntu LTS 14.04. We used Dokku to provide a Heroku-like, Docker based containerization system that uses Git pushes to trigger build and loading dependencies.  Dokku is open-sourced, and ensures our single-instance apps can be appropriately containerized and deployed using fixed dependencies from NPM.</p>
 
+              <h4>Configuration Management</h4>
+
+              <p>We use NPM as our configuration and dependency management tool, to ensure that all versions of NodeJS libraries are consistent from development to deployment. The NPM package.json file also includes all application configuration necessary for different deploy environments (primarily local, test and production).</p>
+
+              <h4>Continuous Integration and Monitoring</h4>
+
+              <p>We are using two techniques for continuous integration and monitoring. The first is a Jenkins-based CI/CD system where tests are run automatically based on GitHub deploy webhooks.  We also use Dokku's native CHECKS system to ensure that deployments and underlying system components have been properly configured before finalizing the new docker instance and retiring the previous instance. Our unit testing system is based on Mocha, Should and Superagent.</p>
+
+              <p>Continuous monitornig is provided by AWS Cloudwatch, both to measure system performance and applicaiton uptime.</p>
+
+              <h4>Application</h4>
+
+              <p>The core application is divided into two parts:</p>
+              <ol>
+                <li>A data pipeline for consuming and processing data from the OpenFDA API</li>
+                <li>An ExpressJS server that delivers the client to the browser, and uses a JSON based API to deliver data for rendering.</li>
+              </ol>
+
+              <p>The entire application is built in JavaScript and NodeJS, using MongoDB as the NoSQL document store for the final processed action documents.</p>
+
+              <p>The core application is built on a message bus design paradigm, using NodeJS events, with the root application (`app`) object serving as the event dispatcher.</p>
+
+              <p>We find this architecture is particularly well suited to data processing tasks because it relies on events to trigger processing actions, ensuring an asynchronous and non-blocking applcation. This means we can process more data (and use more CPU per cycle) because the application is able to process data while waiting on Network and DB IO operations.</p>
+
+              <h4>Processing Pipeline</h4>
+
+              <p>The processing pipeline has three stages:</p>
+
+              <ol>
+              <li>The OpenFDASource plugin loads data from the OpenFDA enforcement actions API.</li>
+              <li>The EntityExtraction plugin uses the Yahoo YQL entity extraction service to identify keywords and terms from the action 'reason_for_recall' field.</li>
+              <li>The ActionManager plugin saves the processed action in the persistent MongoDB data store for processing later.</li>
+              </ol>
+
+              <h4>Front-end Display</h4>
+
+              <p>The front-end is a combination of server-side rendered EJS files, and client side Javascript which loads data via REST APIs.  On page load, the server bootstraps the initial page with data to improve page loading time, then the client loads the keyword and matrix data via API calls.</p>
+
+              <p>We are using D3 as the main visualization library, along with other open source libraries like JQuery and Bootstrap for UI/UX elements.</p>
+
+              <h4>Open Source Tools</h4>
+
+              <p>This project uses the following open source tools:</p>
+              <ol>
+              <li>Ubuntu Linux 14.04</li>
+              <li>Docker/Dokku</li>
+              <li>JavaScript</li>
+              <li>NodeJS</li>
+              <li>MongoDB</li>
+              <li>ExpresJS</li>
+              <li>D3</li>
+              <li>Bootstrap/JQuery</li>
+              </ol>
             </p>
           </div>
           <div class="col-sm-2"></div>
