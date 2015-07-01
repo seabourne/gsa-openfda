@@ -19,6 +19,9 @@
   "config": {
     "local": {
       "db": "mongodb://localhost/gsa-openfda-dev"
+    },
+    "production": {
+      "db": "mongodb://localhost/gsa-openfda-dev"
     }
   },
   "homepage": "https://github.com/seabourne/gsa-openfda",
