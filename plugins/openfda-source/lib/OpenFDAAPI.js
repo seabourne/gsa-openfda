@@ -27,7 +27,7 @@ class OpenFDAAPI {
         } else {
           A.remove({}, (err, n) => {
             app.log.debug(n+" actions removed")
-            _getData()
+            this._getData()
             app.emit('openFDA.ready')
           })
         }
@@ -49,13 +49,16 @@ class OpenFDAAPI {
   }
 
   _queryAPI (skip, cb) {
+    console.log('skip', skip)
+    var url = this.url+"&skip="+skip
     request(this.url, (err, res) => {
+      skip = skip+100
       if(err) return cb(err)
       var data = JSON.parse(res.body)
       if(data && data.results) cb(null, data.results)
-      if(skip+100 < data.meta.results.total) {
+      if(skip < data.meta.results.total) {
         setTimeout(() => {
-          this._queryAPI(skip+100, cb)
+          this._queryAPI(skip, cb)
         }, 1500)
       }
       return cb(err, [])
