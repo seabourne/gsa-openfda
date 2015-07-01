@@ -23,7 +23,7 @@ class OpenFDAAPI {
           A.find({}, function(err, as) {
             if(err || !as || as.length == 0) {
               app.log('no data, loading')
-              _getData()
+              this._getData()
             }
             app.emit('openFDA.ready')
           })
