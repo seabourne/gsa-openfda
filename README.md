@@ -112,6 +112,7 @@ We think this prototype presents numerous interesting next steps, both for expan
 1. Add in drill-down capabilites. The application provides a high-level overview of the relationship between keywords extracted from enforcement actions. However, a clear need is to be able to drill-down to further levels of detail. This could be done as new enforcement action specific detail screens, or as part of the existing visualizations.
 1. Include additional NLP/ML tools. Because of the specific nature of the data, there is quite a bit of room for improvement in the accuracy of the keyword identification. However, this will take additional time and data to train the NLP models.
 1. Include decision support tools. One exciting next step could be the inclusion of decision support tools based on the data. Because we can draw correlations between particularl events (like infection of children) and other factors, it would be relatively simple to feed the existing pipeline into a ML model for assigning predictive scores for events that are likely to result in significant publicity or public harm.
+
 ## License
 
 The MIT License (MIT)
