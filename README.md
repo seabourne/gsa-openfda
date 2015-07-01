@@ -8,12 +8,20 @@ Using a combination of APIs, natural language processing (NLP) tools, data aggre
 
 ## Architecture
 
+### System
+
+The application has been deployed on an Amazon Web Services EC2 (small) instance, running Ubuntu LTS 14.04. We used Dokku to provide a Heroku-like, Docker based containerization system that uses Git pushes to trigger build and loading dependencies.  Dokku is open-sourced, and ensures our single-instance apps can be appropriately containerized and deployed using fixed dependencies from NPM.
+
+### Configuration Management
+
+We use NPM as our configuration and dependency management tool, to ensure that all versions of NodeJS libraries are consistent from development to deployment. The NPM package.json file also includes all application configuration necessary for different deploy environments (primarily local, test and production).
+
+### Application
+
 The core application is divided into two parts:
 
 1. A data pipeline for consuming and processing data from the OpenFDA API
 2. An ExpressJS server that delivers the client to the browser, and uses a JSON based API to deliver data for rendering.
-
-[[Insert Diagram]]
 
 The entire application is built in JavaScript and NodeJS, using MongoDB as the NoSQL document store for the final processed action documents.
 
@@ -29,6 +37,11 @@ The processing pipeline has three stages:
 2. The EntityExtraction plugin uses the Yahoo YQL entity extraction service to identify keywords and terms from the action 'reason_for_recall' field.
 3. The ActionManager plugin saves the processed action in the persistent MongoDB data store for processing later.
 
+### Front-end Display
+
+The front-end is a combination of server-side rendered EJS files, and client side Javascript which loads data via REST APIs.  On page load, the server bootstraps the initial page with data to improve page loading time, then the client loads the keyword and matrix data via API calls.
+
+We are using D3 as the main visualization library, along with other open source libraries like JQuery and Bootstrap for UI/UX elements.
 
 ## Open Source Tools
 
@@ -41,7 +54,13 @@ This project uses the following open source tools:
 1. MongoDB
 1. ExpresJS
 1. D3
-1. Bootstrap
+1. Bootstrap/JQuery
+
+## Team
+
+* Project Lead/Senior Developer: Mike Reich
+* Poduct Manager: Dan Nicollet
+* DevOps/Backend Developer: Scott Maxson
 
 ## Next Steps
 
