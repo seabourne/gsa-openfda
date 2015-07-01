@@ -81,7 +81,7 @@ d3.json("/api/keywords.json", function(keywords) {
         .data(layout.chords)
       .enter().append("path")
         .attr("class", "chord")
-        .style("fill", function(d) { return colors(i); }) //cities[d.source.index].color; })
+        .style("fill", function(d) { return colors(d.source.index); }) //cities[d.source.index].color; })
         .attr("d", path);
 
     // Add an elaborate mouseover title for each chord.

@@ -1,7 +1,7 @@
 /* 
 * @Author: Mike Reich
 * @Date:   2015-06-30 07:04:33
-* @Last Modified 2015-06-30
+* @Last Modified 2015-07-01
 */
 
 'use strict';
@@ -42,8 +42,9 @@ class EntityExtractor {
     var next = q[1]
     var query = "select * from contentanalysis.analyze where text='" 
     query += this._cleanContent(record.reason_for_recall)+". "
-    query += this._cleanContent(record.product_description)+". "
-    query += this._cleanContent(record.distribution_pattern)+"';"
+    //query += this._cleanContent(record.product_description)+". "
+    //query += this._cleanContent(record.distribution_pattern)+"';"
+    query += "';"
     var qstring = "https://query.yahooapis.com/v1/public/yql"
     var opts = {q: query, format: 'json'}
     
