@@ -2,9 +2,21 @@
 
 ## Introduction
 
-The goal of the Seabourne/Metrostar Pool 2 prototype is to visualize the relationship between different concepts in food safety enforcement actions.
+The goal of the Seabourne/Metrostar Pool 2 prototype is to visualize the relationship between different concepts in food safety enforcement actions.  Ideally, this approach will help FDA stakeholders explore the relationship between key reasons for recalls (for example, fatal infections due to ingestion of the product) and other factors (like presence of listeria in peanut products). 
 
 Using a combination of APIs, natural language processing (NLP) tools, data aggregations, and visualization libraries, this prototype demonstrates the feasibility and low level of effort necessary to use open source tools to better understand and represent the relationships between products, ingredients, contaminations and enforcement actions.
+
+### Moving beyond structured data
+
+Our approach is a demonstration of how natural language processing approaches and technologies can help Federal Agencies move beyond the limits of structured (or poorly structured) data. Analyzing, and visualizing data, does not necessarily have to begin with a time-consuming and expensive data cleansing and ETL processing. Instead, newer technologies, including NLP and machine learning, are lowering the technology and cost barriers to getting the most out of any type of data.
+
+This prototype took less than 25 person hours to develop, from concept through to deliver, and we hope that it provides a tangible (and interesting) demonstration of the many great things that can be done today using APIs, open source tools and data.
+
+## Usage
+
+The prototype uses a Chord visualization to show the relationship between different keywords extracted from enforcement actions. The diagram shows, for example, that 'fatal infections' are most strongly correlated with 'young children' in enforcement actions.
+
+To use the Chord diagram, simply move your mouse over a category on the outer edge of the diagram. This will highlight the different connections. The thickness of the connections shows how strongly the two terms are related (as measured by how often they show up together in the same enforcement action report). You can hover over the chord itself to see how many times the terms were found together.
 
 ## Architecture
 
@@ -69,4 +81,10 @@ This project uses the following open source tools:
 * DevOps/Backend Developer: Scott Maxson
 
 ## Next Steps
+
+We think this prototype presents numerous interesting next steps, both for expanding the visualization capabilities, but also to integrate more advanced machine learning and NLP tools to improve the volume and fidelity of processing.
+
+1. Add in drill-down capabilites. The application provides a high-level overview of the relationship between keywords extracted from enforcement actions. However, a clear need is to be able to drill-down to further levels of detail. This could be done as new enforcement action specific detail screens, or as part of the existing visualizations.
+1. Include additional NLP/ML tools. Because of the specific nature of the data, there is quite a bit of room for improvement in the accuracy of the keyword identification. However, this will take additional time and data to train the NLP models.
+1. Include decision support tools. One exciting next step could be the inclusion of decision support tools based on the data. Because we can draw correlations between particularl events (like infection of children) and other factors, it would be relatively simple to feed the existing pipeline into a ML model for assigning predictive scores for events that are likely to result in significant publicity or public harm.
 
