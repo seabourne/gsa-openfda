@@ -6,31 +6,31 @@ cd ./plugins/core
 npm install
 
 echo "Installing Client"
-cd ./plugins/client
+cd ../client
 npm install
 
 echo "Installing action manager"
-cd ./plugins/action-manager
+cd ../action-manager
 npm install
 
 echo "Installing entity extraction"
-cd ./plugins/entity-extraction
+cd ../entity-extraction
 npm install
 
 echo "Installing logging"
-cd ./plugins/logging
+cd ../logging
 npm install
 
 echo "Installing openfda-source"
-cd ./plugins/openfda-source
+cd ../openfda-source
 npm install
 
 echo "Installing router"
-cd ./plugins/router
+cd ../router
 npm install
 
 echo "Installing storage-mongoose"
-cd ./plugins/storage-mongoose
+cd ../storage-mongoose
 npm install
 
 echo "Done Installing"
