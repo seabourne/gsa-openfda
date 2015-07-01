@@ -1,7 +1,7 @@
 /* 
 * @Author: Mike Reich
 * @Date:   2015-06-22 11:24:19
-* @Last Modified 2015-06-30
+* @Last Modified 2015-07-01
 */
 
 'use strict';
@@ -16,9 +16,22 @@ class OpenFDAAPI {
 
     this.url = 'https://api.fda.gov/food/enforcement.json?search=%22%22&limit=100'
 
+    //app._bootAwait['app.startup'].push('openFDA.ready')
     app.on('app.startup.after', () => {
-      app.log('getting openFDAAPI')
-      this._getData()
+      app.emit('storage.getModel', 'Action', (err, A) => {
+        if(!app.config.RESET_ACTIONS) {
+          A.find({}, function(err, as) {
+            if(err || !as || as.length == 0) console.log('getting data')//_getData()
+            app.emit('openFDA.ready')
+          })
+        } else {
+          A.remove({}, (err, n) => {
+            app.log.debug(n+" actions removed")
+            _getData()
+            app.emit('openFDA.ready')
+          })
+        }
+      })
     })
 
     loaded()
