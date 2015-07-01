@@ -16,6 +16,12 @@ The application has been deployed on an Amazon Web Services EC2 (small) instance
 
 We use NPM as our configuration and dependency management tool, to ensure that all versions of NodeJS libraries are consistent from development to deployment. The NPM package.json file also includes all application configuration necessary for different deploy environments (primarily local, test and production).
 
+### Continuous Integration and Monitoring
+
+We are using two techniques for continuous integration and monitoring. The first is a Jenkins-based CI/CD system where tests are run automatically based on GitHub deploy webhooks.  We also use Dokku's native CHECKS system to ensure that deployments and underlying system components have been properly configured before finalizing the new docker instance and retiring the previous instance. Our unit testing system is based on Mocha, Should and Superagent.
+
+Continuous monitornig is provided by AWS Cloudwatch, both to measure system performance and applicaiton uptime.
+
 ### Application
 
 The core application is divided into two parts:
