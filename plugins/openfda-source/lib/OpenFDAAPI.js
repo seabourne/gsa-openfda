@@ -20,7 +20,7 @@ class OpenFDAAPI {
     app.on('app.startup.after', () => {
       app.emit('storage.getModel', 'Action', (err, A) => {
         if(!app.config.RESET_ACTIONS) {
-          A.find({}, function(err, as) {
+          A.find({}, (err, as) => {
             if(err || !as || as.length == 0) {
               app.log('no data, loading')
               this._getData()
