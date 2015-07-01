@@ -22,7 +22,7 @@
       "db": "mongodb://localhost/gsa-openfda-dev"
     },
     "production": {
-      "db": "mongodb://172.31.51.44/gsa-openfda-dev"
+      "db": "mongodb://172.31.51.44:27017/gsa-openfda-dev"
     }
   },
   "homepage": "https://github.com/seabourne/gsa-openfda",
