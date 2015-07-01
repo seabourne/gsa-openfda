@@ -21,7 +21,10 @@ class OpenFDAAPI {
       app.emit('storage.getModel', 'Action', (err, A) => {
         if(!app.config.RESET_ACTIONS) {
           A.find({}, function(err, as) {
-            if(err || !as || as.length == 0) console.log('getting data')//_getData()
+            if(err || !as || as.length == 0) {
+              app.log('no data, loading')
+              _getData()
+            }
             app.emit('openFDA.ready')
           })
         } else {
