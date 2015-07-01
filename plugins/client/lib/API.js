@@ -21,7 +21,12 @@ class API {
       })
 
       gather("/api/keywords.json", (req, res) => {
-        res.send(_.keys(this.keys))
+        if(_.keys(this.keys).length == 0) {
+          this._processMatrix((matrix) => {
+            res.send(_.keys(this.keys))
+          })
+        } else
+          res.send(_.keys(this.keys))
       })
 
       gather("/api/generate", (req, res) => {
@@ -75,7 +80,6 @@ class API {
         })
     })
   }
-
 }
 
 module.exports = API

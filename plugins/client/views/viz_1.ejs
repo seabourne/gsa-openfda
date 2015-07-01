@@ -1,15 +1,15 @@
 <div class="row">
-  <div class="col-sm-12 cf-item">
+  <div class="col-sm-8 cf-item">
     <div class="inner">
       <header>
-        <p><span></span>Chord</p>
+        <p><span></span>Keyword Relationships</p>
       </header>
       <div class="content" id="chord" >
         <script src="http://d3js.org/d3.v2.min.js?2.8.1"></script>
 <script>
 
-var width = 720,
-    height = 720,
+var width = 600,
+    height = 600,
     outerRadius = Math.min(width, height) / 2 - 10,
     innerRadius = outerRadius - 24;
 
@@ -88,10 +88,7 @@ d3.json("/api/keywords.json", function(keywords) {
     chord.append("title").text(function(d) {
       return keywords[d.source.index]
           + " → " + keywords[d.target.index]
-          + ": " + d.source.value
-          + "\n" + keywords[d.target.index]
-          + " → " + keywords[d.source.index]
-          + ": " + d.target.value;
+          + ": " + d.source.value;
     });
 
     function mouseover(d, i) {
@@ -107,4 +104,80 @@ d3.json("/api/keywords.json", function(keywords) {
       </div>
     </div> <!-- //end inner -->
   </div> <!-- //end col -->
+  <div class="col-sm-3">
+    <div class="row">
+      <div class="col-sm-12 cf-item">
+        <header>
+          <p><span></span>Total Tags</p>
+        </header>
+        <div class="content">
+          <div class="cf-svmc-sparkline">
+            <div class="cf-svmc">
+              <div class="metric"><%= analytics.total %></div>
+              <div class="change m-green metric-small">
+                <div class="arrow-up"></div>
+                <span class="large">32<span class="small">.45%</span></span>
+              </div>
+            </div>
+            <div class="cf-sparkline clearfix">
+              <div id="spark-1" class="sparkline"></div>
+              <div class="sparkline-value">
+                <div class="metric-small">0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- //end cf-item -->
+      <div class="col-sm-12 cf-item">
+        <header>
+          <p><span></span>Top tags</p>
+        </header>
+        <div class="content">
+          <div id="cf-rag-1" class="cf-rag">
+            <div class="cf-bars">
+              <ul>
+                <li style="height: 50%">
+                  <div class="cf-bars-bar m-red mb"></div>
+                </li>
+                <li style="height: 40%">
+                  <div class="cf-bars-bar m-amber mb"></div>
+                </li>
+                <li style="height: 10%">
+                  <div class="cf-bars-bar m-green mb"></div>
+                </li>
+              </ul>
+            </div>
+            <div class="cf-figs ">
+              <ul>
+                <li>
+                  <div class="cf-figs-fig m-red">
+                    <p><%= analytics.toptags[0].count %></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="cf-figs-fig m-amber">
+                    <p><%= analytics.toptags[1].count %></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="cf-figs-fig m-green">
+                    <p><%= analytics.toptags[2].count %></p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="cf-txts ">
+              <ul>
+                <li>
+                  <div class="cf-txts-txt m-red"><p><%= analytics.toptags[0]._id %></p></div>
+                </li>
+                <li><div class="cf-txts-txt m-amber"><p><%= analytics.toptags[1]._id %></p></div></li>
+                <li><div class="cf-txts-txt m-green"><p><%= analytics.toptags[2]._id %></p></div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div> <!-- //end cf-item -->
+    </div>
+  </div>
 </div>

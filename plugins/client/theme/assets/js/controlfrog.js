@@ -454,20 +454,20 @@ function gaugeUpdate(gauge, opts){
 * R.A.G
 *
 */
-$(document).ready(function(){
-	/*
-	*	Copy the each() function for each R.A.G chart you have
-	* 	e.g. $('#cf-rag-1').each(function(){.....}
-	*/								
-	$('.cf-rag').each(function(){
-		// Dummy data for RAG
-		ragData = [40,50,10];
-		ragLabels = ['Red','Amber','Green'];
-		ragOpts = {postfix:'%'}
+// $(document).ready(function(){
+// 	/*
+// 	*	Copy the each() function for each R.A.G chart you have
+// 	* 	e.g. $('#cf-rag-1').each(function(){.....}
+// 	*/								
+// 	$('.cf-rag').each(function(){
+// 		// Dummy data for RAG
+// 		ragData = [40,50,10];
+// 		ragLabels = ['Red','Amber','Green'];
+// 		ragOpts = {postfix:'%'}
 
-		cf_rRags[$(this).prop('id')] = new RagChart($(this).prop('id'), ragData, ragLabels, ragOpts);
-	});
-}); // end doc ready
+// 		cf_rRags[$(this).prop('id')] = new RagChart($(this).prop('id'), ragData, ragLabels, ragOpts);
+// 	});
+// }); // end doc ready
 
 /*
 *
