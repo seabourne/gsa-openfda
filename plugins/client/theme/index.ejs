@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Controlfrog - Meaningful Metrics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/assets/theme/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/theme/css/controlfrog.css" rel="stylesheet" media="screen">   
+  <link href="/assets/theme/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>    
+  <script src="/assets/theme/js/moment.js"></script>  
+  <script src="/assets/theme/js/easypiechart.js"></script>
+  <script src="/assets/theme/js/gauge.js"></script> 
+  <script src="/assets/theme/js/chart.js"></script>
+  <script src="/assets/theme/js/jquery.sparklines.js"></script>     
+    <script src="/assets/theme/js/bootstrap.js"></script>
+    <script src="/assets/theme/js/controlfrog-plugins.js"></script>
+    
+    <!--[if lt IE 9]>
+    <script src="/assets/theme/js/respond.min.js"></script>
+    <script src="/assets/theme/js/excanvas.min.js"></script>
+  <![endif]-->
+    
+    
+  <script>
+    var themeColour = 'black';
+  </script>
+    <script src="/assets/theme/js/controlfrog.js"></script>
+</head>
+<body class="black">
+
+  <div class="cf-nav cf-nav-state-min">
+    <a href="" class="cf-nav-toggle">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+    
+    <ul>
+      <li class="current cf-nav-shortcut">
+        <a href="layout-1.html" class="current active">
+          <span class="cf-nav-min">1</span>
+          <span class="cf-nav-max">Layout 1</span>
+        </a>
+        <!--
+        <ul>
+          <li><a href="">Sub menu</a></li>
+          <li><a href="">Sub menu</a></li>
+          <li><a href="">Sub menu</a></li>                    
+        </ul>
+        -->
+      </li>
+      <li class="cf-nav-shortcut">
+        <a href="layout-2.html">
+          <span class="cf-nav-min">2</span>
+          <span class="cf-nav-max">Layout 2</span>
+        </a>
+      </li>
+      <li class="cf-nav-shortcut">
+        <a href="layout-3.html">
+          <span class="cf-nav-min">3</span>
+          <span class="cf-nav-max">Layout 3</span>
+        </a>
+      </li>
+      <li class="cf-nav-shortcut">
+        <a href="layout-4.html">
+          <span class="cf-nav-min">4</span>
+          <span class="cf-nav-max">Layout 4</span>
+        </a>
+      </li>
+      <li>
+        <a href="layout-4.html">
+          <span class="cf-nav-min">&bull;</span>        
+          <span class="cf-nav-max">Example with no shortcut</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="cf-container cf-nav-active">
+    <%- content %>
+  </div> <!-- //end container -->
+
+</body>
+</html>
