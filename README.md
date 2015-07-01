@@ -18,6 +18,31 @@ The prototype uses a Chord visualization to show the relationship between differ
 
 To use the Chord diagram, simply move your mouse over a category on the outer edge of the diagram. This will highlight the different connections. The thickness of the connections shows how strongly the two terms are related (as measured by how often they show up together in the same enforcement action report). You can hover over the chord itself to see how many times the terms were found together.
 
+## Installation
+
+### System Requirements
+
+1. NodeJS
+2. MongoDB
+
+### Install
+
+```
+> npm install
+```
+
+### Configuration
+
+The app assumes you are running a MongoDB service locally on the standard 27017 port.  If you wish to change this to use a different MongoDB server, enter the connection string in the root package.json file `config` attribute.
+
+### Data Loading
+
+By default, the application loads data to initialize the database.  If you would like to force reload the data, set the `RESET_ACTIONS` env variable on startup. This will wipe the existing data and reload/update the data set.
+
+### Data Aggregation
+
+By default, the aggregations will load on the first page load.  If you would like to update the data aggregations used to render the visualizations, navigate to `/api/generate`. This will reset the internal matrix maps.
+
 ## Architecture
 
 ### System
@@ -87,4 +112,26 @@ We think this prototype presents numerous interesting next steps, both for expan
 1. Add in drill-down capabilites. The application provides a high-level overview of the relationship between keywords extracted from enforcement actions. However, a clear need is to be able to drill-down to further levels of detail. This could be done as new enforcement action specific detail screens, or as part of the existing visualizations.
 1. Include additional NLP/ML tools. Because of the specific nature of the data, there is quite a bit of room for improvement in the accuracy of the keyword identification. However, this will take additional time and data to train the NLP models.
 1. Include decision support tools. One exciting next step could be the inclusion of decision support tools based on the data. Because we can draw correlations between particularl events (like infection of children) and other factors, it would be relatively simple to feed the existing pipeline into a ML model for assigning predictive scores for events that are likely to result in significant publicity or public harm.
+## License
 
+The MIT License (MIT)
+
+Copyright (c) 2015 Seabourne Consulting LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
