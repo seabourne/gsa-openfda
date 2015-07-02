@@ -6,10 +6,6 @@ The goal of the Seabourne/Metrostar Pool 2 prototype is to visualize the relatio
 
 Using a combination of APIs, natural language processing (NLP) tools, data aggregations, and visualization libraries, this prototype demonstrates the feasibility and low level of effort necessary to use open source tools to better understand and represent the relationships between products, ingredients, contaminations and enforcement actions.
 
-### Moving beyond structured data
-
-Our approach is a demonstration of how natural language processing approaches and technologies can help Federal Agencies move beyond the limits of structured (or poorly structured) data. Analyzing, and visualizing data, does not necessarily have to begin with a time-consuming and expensive data cleansing and ETL processing. Instead, newer technologies, including NLP and machine learning, are lowering the technology and cost barriers to getting the most out of any type of data.
-
 This prototype took less than 25 person hours to develop, from concept through to deliver, and we hope that it provides a tangible (and interesting) demonstration of the many great things that can be done today using APIs, open source tools and data.
 
 ## Usage
@@ -55,9 +51,9 @@ We use NPM as our configuration and dependency management tool, to ensure that a
 
 ### Continuous Integration and Monitoring
 
-We are using two techniques for continuous integration and monitoring. The first is a Jenkins-based CI/CD system where tests are run automatically based on GitHub deploy webhooks.  We also use Dokku's native CHECKS system to ensure that deployments and underlying system components have been properly configured before finalizing the new docker instance and retiring the previous instance. Our unit testing system is based on Mocha, Should and Superagent.
+We are using two techniques for continuous integration and monitoring. The first is a Jenkins-based CI/CD system where tests are run automatically based on GitHub deploy webhooks.  We also use Dokku's native CHECKS system to ensure that deployments and underlying system components have been properly configured before finalizing the new Docker instance and retiring the previous instance. Our unit testing system is based on Mocha, Should and Superagent.
 
-Continuous monitornig is provided by AWS Cloudwatch, both to measure system performance and applicaiton uptime.
+Continuous monitoring is provided by AWS Cloudwatch, both to measure system performance and application uptime.
 
 ### Application
 
@@ -136,3 +132,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
